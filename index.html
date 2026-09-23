@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TFOClan.learn.cc | Play Eaglercraft, Leader Strike & Arcade Games</title>
+    <meta
+      name="description"
+      content="TFOClan.learn.cc is the home for Eaglercraft 1.8, Eaglercraft 1.12.2, Leader Strike, and classic browser games built for instant play."
+    />
+    <meta
+      name="keywords"
+      content="TFOClan, TFOClan.learn.cc, Eaglecraft, Eaglercraft, Eaglercraft 1.8, Eaglercraft 1.12.2, Minecraft browser game, Leader Strike, snake game, browser games"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TFOClan.learn.cc" />
+    <meta
+      property="og:description"
+      content="Official browser game hub for Eaglercraft, arcade favorites, and instant-play multiplayer-style experiences."
+    />
+    <meta property="og:image" content="/favicon.svg" />
+    <meta property="og:site_name" content="TFOClan.learn.cc" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TFOClan.learn.cc" />
+    <meta
+      name="twitter:description"
+      content="Play Eaglercraft 1.8, Eaglercraft 1.12.2, Leader Strike and more from one clean home page."
+    />
+    <link rel="canonical" href="https://TFOClan.learn.cc/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <style>
+      :root {
+        --bg-1: #070b17;
+        --bg-2: #0d162d;
+        --bg-3: #101a2f;
+        --panel: rgba(11, 18, 32, 0.8);
+        --panel-border: rgba(148, 163, 184, 0.18);
+        --primary: #7c3aed;
+        --primary-soft: rgba(124, 58, 237, 0.14);
+        --secondary: #22c55e;
+        --accent: #fbbf24;
+        --text: #e5eefc;
+        --muted: #a9b7d2;
+        --danger: #ef4444;
+        --success: #34d399;
+      }
+
+      * { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Inter, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(124, 58, 237, 0.28), transparent 25%),
+          radial-gradient(circle at top right, rgba(34, 197, 94, 0.16), transparent 18%),
+          linear-gradient(135deg, var(--bg-1), var(--bg-2));
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: min(1180px, calc(100% - 24px));
+        margin: 32px auto;
+        background: rgba(7, 11, 23, 0.72);
+        border: 1px solid var(--panel-border);
+        border-radius: 28px;
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.52);
+        overflow: hidden;
+        backdrop-filter: blur(14px);
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        padding: 18px 28px;
+        background: rgba(15, 23, 42, 0.88);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--primary), #a855f7);
+        box-shadow: 0 10px 20px rgba(124, 58, 237, 0.45);
+        font-size: 1.15rem;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .nav a:hover {
+        color: var(--text);
+      }
+
+      .status-pill {
+        padding: 10px 16px;
+        border-radius: 999px;
+        background: rgba(34, 197, 94, 0.12);
+        border: 1px solid rgba(34, 197, 94, 0.42);
+        color: #b9f7d1;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.5fr 0.95fr;
+        gap: 28px;
+        padding: 32px 28px 18px;
+      }
+
+      .hero-panel {
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.12), rgba(59, 130, 246, 0.08));
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        border-radius: 26px;
+        padding: 28px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(251, 191, 36, 0.11);
+        color: var(--accent);
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      h1 {
+        margin: 0 0 14px;
+        font-size: clamp(2.6rem, 5vw, 4.3rem);
+        line-height: 1.02;
+      }
+
+      .subtitle {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.7;
+        max-width: 62ch;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 26px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 18px;
+        border-radius: 14px;
+        border: 1px solid transparent;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button.primary {
+        background: linear-gradient(135deg, var(--primary), #8b5cf6);
+        color: #fff;
+        box-shadow: 0 16px 30px rgba(124, 58, 237, 0.32);
+      }
+
+      .button.secondary {
+        background: rgba(15, 23, 42, 0.7);
+        border-color: rgba(148, 163, 184, 0.16);
+        color: var(--text);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .stat-box {
+        background: rgba(12, 18, 30, 0.8);
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        border-radius: 18px;
+        padding: 18px 16px;
+      }
+
+      .stat-box strong {
+        display: block;
+        font-size: 1.5rem;
+        margin-bottom: 4px;
+      }
+
+      .stat-box span {
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .access-panel {
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        border-radius: 26px;
+        padding: 26px 20px;
+      }
+
+      .access-panel h2 {
+        margin: 0 0 18px;
+        font-size: 1.5rem;
+      }
+
+      .mini-label {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--muted);
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .pw-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(148, 163, 184, 0.16);
+        border-radius: 14px;
+        padding: 10px 12px;
+      }
+
+      .pw-box input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: var(--text);
+        font-size: 1rem;
+        outline: none;
+      }
+
+      .pw-box input::placeholder {
+        color: rgba(169, 183, 210, 0.7);
+      }
+
+      .pw-box .key {
+        font-size: 1rem;
+      }
+
+      form {
+        margin-top: 14px;
+      }
+
+      button.primary.launch {
+        width: 100%;
+        border: none;
+        border-radius: 14px;
+        padding: 15px 18px;
+        background: linear-gradient(135deg, var(--primary), #8b5cf6);
+        color: white;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 18px 30px rgba(124, 58, 237, 0.35);
+      }
+
+      .status {
+        min-height: 24px;
+        margin-top: 12px;
+        font-size: 0.95rem;
+      }
+
+      .status.error {
+        color: #fecaca;
+      }
+
+      .status.success {
+        color: #bbf7d0;
+      }
+
+      .meta {
+        margin-top: 18px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(148, 163, 184, 0.12);
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .games-section {
+        padding: 0 28px 28px;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .section-header h3 {
+        margin: 0;
+        font-size: clamp(1.5rem, 2vw, 2rem);
+      }
+
+      .section-header p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .games {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .game-card {
+        position: relative;
+        width: 100%;
+        text-align: left;
+        border: 1px solid rgba(148, 163, 184, 0.14);
+        border-radius: 22px;
+        padding: 22px 18px;
+        background: rgba(16, 24, 39, 0.8);
+        color: var(--text);
+        cursor: pointer;
+        transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+      }
+
+      .game-card:hover,
+      .game-card.selected {
+        transform: translateY(-2px);
+        border-color: rgba(124, 58, 237, 0.8);
+        box-shadow: 0 18px 30px rgba(124, 58, 237, 0.18);
+      }
+
+      .game-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 100%;
+        height: 4px;
+        border-radius: 22px 22px 0 0;
+        background: linear-gradient(135deg, var(--primary), #38bdf8);
+      }
+
+      .game-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.12);
+        border: 1px solid rgba(59, 130, 246, 0.25);
+        color: #cfe6ff;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+
+      .game-card h3 {
+        margin: 0 0 8px;
+        font-size: 1.35rem;
+      }
+
+      .game-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .about {
+        background: rgba(11, 18, 32, 0.75);
+        border-top: 1px solid rgba(148, 163, 184, 0.12);
+        padding: 28px;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .info-card {
+        background: rgba(15, 23, 42, 0.74);
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        border-radius: 18px;
+        padding: 20px;
+      }
+
+      .info-card h4 {
+        margin: 0 0 10px;
+        font-size: 1.12rem;
+      }
+
+      .info-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      footer {
+        padding: 20px 28px 32px;
+        color: var(--muted);
+        text-align: center;
+        font-size: 0.94rem;
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .about-grid,
+        .games,
+        .stats {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "TFOClan.learn.cc",
+        "url": "https://TFOClan.learn.cc/",
+        "description": "Official browser game hub for Eaglercraft 1.8, Eaglercraft 1.12.2, Leader Strike, and arcade classics.",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://TFOClan.learn.cc/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="brand" aria-label="TFOClan.learn.cc home">
+          <div class="brand-mark">T</div>
+          <span>TFOClan.learn.cc</span>
+        </div>
+
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#games">Games</a>
+          <a href="#about">About</a>
+          <a href="#launch">Launch</a>
+        </nav>
+
+        <div class="status-pill">Offline Ready</div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-panel">
+            <div class="eyebrow">Official browser games</div>
+            <h1>Play Minecraft-inspired classics in one place.</h1>
+            <p class="subtitle">
+              Eaglecraft Hub brings together Eaglercraft 1.8, Eaglercraft 1.12.2, Leader Strike, and
+              other quick-play browser favorites in a cleaner, more official launch experience built for
+              instant access.
+            </p>
+
+            <div class="cta-row">
+              <a class="button primary" href="#launch">Launch a game</a>
+              <a class="button secondary" href="#games">Browse games</a>
+            </div>
+
+            <div class="stats" aria-label="Website stats">
+              <div class="stat-box">
+                <strong>4</strong>
+                <span>Featured games</span>
+              </div>
+              <div class="stat-box">
+                <strong>1.8</strong>
+                <span>Eaglercraft classic</span>
+              </div>
+              <div class="stat-box">
+                <strong>1.12.2</strong>
+                <span>Modern block version</span>
+              </div>
+            </div>
+          </div>
+
+          <aside id="launch" class="access-panel" aria-label="Game launcher">
+            <h2>Launch selected game</h2>
+
+            <form id="accessForm">
+              <label class="mini-label" for="passwordInput">Enter password</label>
+              <div class="pw-box">
+                <span class="key">🔒</span>
+                <input id="passwordInput" type="password" placeholder="Password" autocomplete="off" />
+              </div>
+              <div style="margin-top: 16px;">
+                <button class="primary launch" type="submit">Launch selected game</button>
+              </div>
+            </form>
+
+            <div id="statusMessage" class="status" aria-live="polite"></div>
+
+            <div class="meta">
+              Selected game: <strong id="selectedGameLabel">Eaglercraft X</strong>
+            </div>
+          </aside>
+        </section>
+
+        <section id="games" class="games-section" aria-label="Game selection">
+          <div class="section-header">
+            <h3>Featured games</h3>
+            <p>Choose a title and launch instantly.</p>
+          </div>
+
+          <div class="games" id="gameGrid">
+            <button class="game-card selected" data-game="eaglercraft" type="button" aria-label="Launch Eaglercraft X">
+              <div class="game-tag">1.8</div>
+              <h3>Eaglercraft X</h3>
+              <p>Classic block sandbox with fast browser loading and offline setup.</p>
+            </button>
+
+            <button class="game-card" data-game="eaglercraft12" type="button" aria-label="Launch Eaglercraft 1.12.2">
+              <div class="game-tag">1.12.2</div>
+              <h3>Eaglercraft 1.12.2</h3>
+              <p>Newer version with a smoother modern block-building feel.</p>
+            </button>
+
+            <button class="game-card" data-game="leaderstrike" type="button" aria-label="Launch Leader Strike">
+              <div class="game-tag">Arcade</div>
+              <h3>Leader Strike</h3>
+              <p>Arcade action and quick rounds for a little extra chaos.</p>
+            </button>
+
+            <button class="game-card" data-game="snake" type="button" aria-label="Launch Snake game">
+              <div class="game-tag">Arcade</div>
+              <h3>Snake</h3>
+              <p>Fast reflexes, tight movement, and classic snake survival.</p>
+            </button>
+          </div>
+        </section>
+
+        <section id="about" class="about" aria-label="About Eaglecraft Hub">
+          <div class="about-grid">
+            <article class="info-card">
+              <h4>What we offer</h4>
+              <p>
+                A clean, organized home for browser-based Minecraft-inspired experiences and short-form
+                arcade games with a simple launch flow.
+              </p>
+            </article>
+
+            <article class="info-card">
+              <h4>Built for easy access</h4>
+              <p>
+                Every title is surfaced through a streamlined homepage that is optimized for quick loading,
+                easy selection, and offline-friendly play.
+              </p>
+            </article>
+
+            <article class="info-card">
+              <h4>Search-friendly</h4>
+              <p>
+                The site uses clear page metadata, structured data, and a branded identity to help it be more
+                recognizable and indexable in search results.
+              </p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer>© 2026 TFOClan.learn.cc — Play classic browser games in one official launch hub.</footer>
+    </div>
+
+    <script>
+      const GAME_PASSWORD = '24680';
+      const gameFiles = {
+        eaglercraft: {
+          label: 'Eaglercraft X',
+          file: 'EaglercraftX_1.8_u51_Offline_Signed (4).html'
+        },
+        eaglercraft12: {
+          label: 'Eaglercraft 1.12.2',
+          file: 'Eaglercraft_1.12.2_u3_WASM_Offline.html'
+        },
+        leaderstrike: {
+          label: 'Leader Strike',
+          file: 'Leader_Strike_single_file.html'
+        },
+        snake: {
+          label: 'Snake',
+          file: 'snake_game_mobile_single_file.html'
+        }
+      };
+
+      let selectedGame = 'eaglercraft';
+      const messageEl = document.getElementById('statusMessage');
+      const selectedGameLabel = document.getElementById('selectedGameLabel');
+      const passwordInput = document.getElementById('passwordInput');
+      const cards = document.querySelectorAll('.game-card');
+
+      function updateSelection(nextGame) {
+        selectedGame = nextGame;
+        selectedGameLabel.textContent = gameFiles[nextGame].label;
+
+        cards.forEach((card) => {
+          card.classList.toggle('selected', card.dataset.game === nextGame);
+        });
+      }
+
+      cards.forEach((card) => {
+        card.addEventListener('click', () => updateSelection(card.dataset.game));
+      });
+
+      document.getElementById('accessForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const value = passwordInput.value.trim();
+
+        if (value === GAME_PASSWORD) {
+          const file = gameFiles[selectedGame].file;
+          window.open(file, '_blank', 'noopener,noreferrer');
+          messageEl.textContent = 'Unlocked. Opening ' + gameFiles[selectedGame].label + '...';
+          messageEl.className = 'status success';
+          passwordInput.value = '';
+        } else {
+          messageEl.textContent = 'Incorrect password. Try again.';
+          messageEl.className = 'status error';
+          passwordInput.focus();
+        }
+      });
+    </script>
+  </body>
+</html>
