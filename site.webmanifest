@@ -1,0 +1,17 @@
+{
+  "name": "TFOClan.learn.cc",
+  "short_name": "TFOClan",
+  "description": "Official browser game hub for Eaglercraft, Leader Strike, and arcade classics.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070b17",
+  "theme_color": "#7c3aed",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
